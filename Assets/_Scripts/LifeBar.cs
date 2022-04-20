@@ -1,0 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+[RequireComponent(typeof(Image))]
+public class LifeBar : MonoBehaviour
+{
+    [Tooltip("Vida a mostrar en la barra")]
+    public Life targetLife;
+
+    //imagen a modificar, es propia del objeto
+    private Image _image;
+
+	private void Awake()
+	{
+		_image = GetComponent<Image>();
+	}
+
+	private void Update()
+	{
+		_image.fillAmount = targetLife.Amount/targetLife.maximunLife;
+	}
+}
